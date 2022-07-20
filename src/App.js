@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import CreateUser from "./components/create-user.component";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ListUser from "./components/user-list.component";
+import EditUser from "./components/edit-user.component";
+import ConvertToCsv from "./components/export-csv.component";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="main">
+        <h2 className="main-header">Media Mint React Application</h2>
+        <div>
+        <Routes>
+            <Route path="/" element={<ListUser />}></Route>
+          </Routes>
+          <Routes>
+            <Route path="/create" element={<CreateUser />}></Route>
+          </Routes>
+        </div>
+        <div style={{ marginTop: 20 }}>
+          <Routes>
+          <Route path="/list" element={<ListUser />}></Route>
+          </Routes>
+        </div>
+        <Routes>
+          <Route path="/edit" element={<EditUser />}></Route>
+          </Routes>
+          <Routes>
+          <Route path="/csv" element={<ConvertToCsv />}></Route>
+          </Routes>
+      </div>
+    </Router>
   );
 }
 
